@@ -1,0 +1,40 @@
+<!--
+Email template: moderate_lecture_comment
+Description: This email is sent to an instructor when a comment is posted that requires moderation.
+ -->
+
+<!-- Email Title -->
+<div class="header-title">
+    <h1 class="comment-title">Comment awaiting moderation</h1>
+  </div>
+  
+  <!-- Content -->
+  <p class="comment-link">
+    <a href="{{comment.course_url}}?preview=logged_in">{{comment.course_name}}</a>
+    <span>></span>
+    <a href="{{comment.lecture_url}}?preview=logged_in">{{comment.lecture_name}}</a>
+  </p>
+  <p class="comment-author">
+    <span>{{comment.comment_author_name}}</span>
+    {% if comment.parent_author != "" %}
+      <span class="comment-author--re">Re: {{comment.parent_author}}</span>
+    {% endif %}
+  </p>
+  <p class="comment-date">{{comment.created_at}}</p>
+  
+  <hr class="separator">
+  
+  <blockquote class="comment-content">
+    <p class="comment-content--body">{{ comment.body}}</p>
+  </blockquote>
+  
+  <p class="comment-action-container text-center">
+    {% if to.is_author %}
+        <a href="{{school.url}}/admin-app/courses/{{course_id}}/comments?tab=pending-approval&page=1&preview=logged_in" class="comment-action-container--button">Moderate Comment</a>
+    {% else %}
+        <a href="{{school.url}}/admin-app/site/comments?tab=pending-approval&page=1&preview=logged_in" class="comment-action-container--button">Moderate Comment</a>
+    {% endif %}
+  </p>
+  
+  <hr class="separator">
+  

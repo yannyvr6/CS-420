@@ -1,0 +1,19 @@
+<!--
+Email template: student_mailer/free_trial_receipt
+Description: This email is sent to a student when enrolling in a free trial and/or using a 100% coupon for the first payment
+-->
+
+<div class="free-trial-summary">
+    <p>Hi {{ sale.student_name }}, </p>
+  
+    <p>Thanks for subscribing to <a class="bold" href="{{ purchased_item_url }}">{{purchased_item_name}}</a>! Your {{ offer }} starts now.</p>
+    <p>
+      When your {{ offer }} ends on <b>{{ next_billing_date }}</b>, we'll charge your payment method on file <b>{{ full_pricing }}</b>.
+      This subscription will automatically renew {{ billing_period }} until you cancel.
+    </p>
+  
+    <p><a href="{{school_url}}/courses/enrolled/" class='btn-primary'>View content</a></p>
+  
+    {% include "mailer_partials/free_trial_order_summary" %}
+  </div>
+  

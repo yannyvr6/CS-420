@@ -1,0 +1,20 @@
+<!--
+Email template: subscription_billing_error
+Description: This email is sent to instructors when an attempt to bill a student for a course
+or service is unsuccessful.
+ -->
+
+<!-- Email Title -->
+<div class="header-title">
+  <h1>Failed subscription billing attempt</h1>
+</div>
+
+<!-- Content -->
+<p>We tried to bill <a href="{{student.admin_url}}">{{ student.name }}</a> for {{ purchased_item.name }}, but the attempt was unsuccessful.</p>
+<p>
+  {% if sale.skip_dunning_emails %}
+    You have disabled automated failed billing notifications, so Teachable has not sent the student a notice about the failed billing attempt.
+  {% else %}
+    We've sent the student an automated email to notify them about the failed billing attempt and request that they update their payment method.
+  {% endif %}
+</p>

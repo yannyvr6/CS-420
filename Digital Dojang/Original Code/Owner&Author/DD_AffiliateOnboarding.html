@@ -1,0 +1,33 @@
+<!--
+Email template: affiliate_onboarding
+Description: This email is sent to affiliates when they have been added to your school.
+ -->
+
+<!-- Email Title -->
+<div class="header-title">
+    <h1>You've been added as an affiliate to {{ @school.name }}</h1>
+  </div>
+  
+  <!-- Content -->
+  <p>
+    Hi {{ @to.name }},
+  </p>
+  <p>
+    You've been added as an affiliate to {{ @school.name }}.
+    As an affiliate, you'll earn a percentage of each sale made through your
+    promotion—just share your unique affiliate link with prospective students.
+  </p>
+  <p>
+    To get started as an affiliate, click the button below:
+  </p>
+  <p>
+  <p class="text-center">
+    <a class="confirmation-url btn-primary" href="{{@onboarding_url}}", target="_blank" rel="noopener">
+      Get started
+    </a>
+  </p>
+  </p>
+  
+  <!-- Auto-generated JSON-ld compliant JSON for showing action buttons in emails -->
+  <script type="application/ld+json"><%= @goto_action_json %></script>
+  

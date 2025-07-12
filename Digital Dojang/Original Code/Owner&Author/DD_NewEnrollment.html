@@ -1,0 +1,63 @@
+<!--
+    Email template: instructor/purchase_notification
+    Description: This email is sent to instructors when a student enrolls in a course
+    or a service (aka creator_product).
+     -->
+    
+     <!-- Auto-generated JSON-ld compliant JSON for showing action buttons in emails -->
+    <script type="application/ld+json">{{ goto_action_json }}</script>
+    
+    <!-- Email Title -->
+    <div class="header-title">
+      <h1>
+      {% if show_student_details %}
+        {{ student.name }} just purchased {{ purchased_item.name }}
+      {% else %}
+        Someone just purchased {{ purchased_item.name }}
+      {% endif %}
+      </h1>
+    </div>
+    
+    <!-- Content -->
+    <h1 class="price-jumbo">{{ sale.formatted_charge }}</h1>
+    
+    <table class="data-table" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="50%">{{ purchased_item.name }}</td>
+        <td class="text-right">{{sale.receipt_list_price}} </td>
+      </tr>
+      {% if sale.discounted? %}
+        <tr>
+          <td width="50%">{{ text.email_receipts.discount }} ({{sale.coupon_code}})</td>
+          <td class="text-right">{{sale.receipt_discount_amount }}</td>
+        </tr>
+      {% endif %}
+      {% if sale.taxed? %}
+        <tr>
+          <td width="50%">{{ text.email_receipts.tax }}</td>
+          <td class="text-right">{{ sale.formatted_tax_amount }}</td>
+        </tr>
+      {% endif %}
+      <tr class="total">
+        <td width="50%">{{ text.email_receipts.total | translate }}</td>
+        <td class="text-right">{{ sale.formatted_charge }}</td>
+      </tr>
+    </table>
+    {% if transaction_id %}
+      <p class="text-center">
+        <a href="{{ school.url }}/admin/sales/{{ transaction_id }}" class="btn-primary">More details</a>
+      </p>
+    {% endif %}
+    
+    <hr><br>
+    
+    {% if to.has_name? and show_student_details %}
+      {% include "mailer_partials/student_details" %}
+    {% endif %}
+    
+    <hr><br>
+    
+    {% if should_display_progress_bar %}
+      {% include "mailer_partials/enrolled_students_cap_progress" %}
+    {% endif %}
+    

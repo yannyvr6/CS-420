@@ -1,0 +1,19 @@
+<!--
+    Email template: subscription_payment_notification
+    Description: This email is sent to a student 30 days before processing a 3 month, 6 month or yearly subscription payment.
+    -->
+    <!-- Content -->
+    <p class="text-center">
+      <p>Hi {{to.name}},</p>
+      <p>You have an upcoming payment for <b><a href='{{purchased_item.url}}'>{{purchased_item.name}}</a></b> renewing! You will be charged <b>{{price_with_plus_tax_label}}</b> unless you cancel before <b>{{ next_period_start }}</b>.</p>
+      <p>If your payment information is up to date, you don't need to take any action. If you need to <a href='{{school.card_url}}' >update your payment details</a>, please do so now to avoid losing access.</p>
+      <p>Feel free to get in touch with us if you have any questions!</p>
+      <p> {{text.email_receipts.sign_off }}<br> {{ school.name }} </p>
+    </p>
+    <br>
+    <hr>
+    <div class="text-center">
+      <p>Questions? Contact <a class="bold" href="{{ contact_url }}">{{school.name}}</a><br>
+      <a href="{{ url }}">{{ manage_text }}</a></p>
+    </div>
+    

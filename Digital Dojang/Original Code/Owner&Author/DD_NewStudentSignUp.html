@@ -1,0 +1,13 @@
+<!--
+Email template: signup_notification
+Description: This email is sent when a new student signs up at a school.
+ -->
+
+<!-- Email Title -->
+<div class="header-title">
+    <h1>{{ student.name }} just signed up on {{ school.name }}</h1>
+  </div>
+  
+  <!-- Content -->
+  {% include "mailer_partials/student_details" %}
+  

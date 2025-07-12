@@ -1,0 +1,27 @@
+<!--
+Email template: Abandoned Cart Notification
+Description: This email is sent to your customers who have added products to their shopping cart but failed to check out.
+ -->
+
+<!-- Content -->
+<p>Hi there,</p>
+
+<p>Looks like you may have forgotten something!</p>
+
+<p>
+  Thanks for checking out {{ school.name }}. We noticed you left <a href="{{ checkout_url }}">{{ product.name }}</a>
+  behind. But don't worry, we saved it for you.
+</p>
+
+<p>So pick up where you left off and complete your purchase with promo code "10PERCENT" and receive 10% off your order.</p>
+
+<p class="text-center">
+  <a href="{{ checkout_url }}" class="btn-primary">
+    Return to checkout
+  </a>
+</p>
+
+<p>
+  {{ text.email_receipts.sign_off }}<br>
+  {{ school.name }}
+</p>

@@ -1,0 +1,18 @@
+<!--
+Email template: payment_requires_action_notification
+Description: This email is sent to a student when a payment of theirs requires additional authentication due to SCA.
+ -->
+
+<!-- Content -->
+<p>Hi {{to.name}},</p>
+
+<p>
+Your payment for <b><a href='{{purchased_item.url}}'>{{purchased_item.name}}</a></b> requires additional authentication. Please use the link below to complete your purchase.
+</p>
+
+<p class='text-center'><a href='{{sca_url}}' class='btn-primary'>Complete My Payment</a></p>
+
+<p>
+  {{text.email_receipts.sign_off }}<br>
+  {{ school.name }}
+</p>

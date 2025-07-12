@@ -1,0 +1,19 @@
+<!--
+    Email template: reset_quiz_notification
+    Description: This email is sent to a student when a quiz has been reset. It provides a link to the quiz in question.
+     -->
+    
+    <!-- Content -->
+    <p>Hi {{ to.name }},</p>
+    
+    <p>Your quiz score in <strong>{{ lecture.name }}</strong> has been reset. If you wish to retake the quiz, you can do so below.</p>
+    
+    <p class='text-center'><a href='{{ lecture.full_url }}' class='btn-primary'>Retake quiz</a></p>
+    
+    <p>Feel free to get in touch with us if you have any questions!</p>
+    
+    <p>
+      {{ text.email_receipts.sign_off }}<br>
+      {{ school.name }}
+    </p>
+    

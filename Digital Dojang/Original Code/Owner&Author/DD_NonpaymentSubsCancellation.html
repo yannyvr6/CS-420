@@ -1,0 +1,23 @@
+<!--
+Email template: subscription_canceled_nonpayment
+Description: This email is sent to instructors when a student's subscription is cancelled due to nonpayment.
+ -->
+
+<!-- Email Title -->
+<div class="header-title">
+    <h1>Cancelled subscription</h1>
+  </div>
+  
+  <!-- Content -->
+  <p><a href="{{student.admin_url}}">{{ student.name }}’s</a> payment plan or subscription to {{ purchased_item.name }} has been cancelled due to nonpayment.</p>
+  <p>
+    {% if sale.skip_dunning_emails %}
+      You have disabled automated failed billing notifications, so Teachable has not sent the student a notice about the cancellation.
+    {% else %}
+      We've sent the student an automated email to notify them about the cancellation.
+    {% endif %}
+  </p>
+  <p>
+    We automatically re-try failed attempts on the 3rd, 7th, and 14th day after the original subscription due date. The subscription is cancelled automatically after all of these attempts fail.
+  </p>
+  

@@ -1,0 +1,19 @@
+<!--
+    Email template: failed_payment_notification
+    Description: This email is sent to a student when a payment of theirs doesn't go through.
+     -->
+    
+    <!-- Content -->
+    <p>Hi {{to.name}},</p>
+    
+    <p>Your last payment for <b><a href='{{purchased_item.url}}'>{{purchased_item.name}}</a></b> was not successful. It's okay &mdash; you can update your payment information online, and we'll try again in a few days.</p>
+    
+    <p class='text-center'><a href='{{school.card_url}}' class='btn-primary'>Update payment information</a></p>
+    
+    <p>Feel free to get in touch with us if you have any questions!</p>
+    
+    <p>
+      {{text.email_receipts.sign_off }}<br>
+      {{ school.name }}
+    </p>
+    

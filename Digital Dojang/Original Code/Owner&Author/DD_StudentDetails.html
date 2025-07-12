@@ -1,0 +1,26 @@
+<p class="text-center">Here's some information about {{ student.name }}:</p>
+
+<table class="data-table" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="40%">Full Name</td>
+    <td class="text-right">{{ student.name }}</a></td>
+  </tr>
+  <tr>
+    <td width="40%">Email Address</td>
+    <td class="text-right"><a  data-skip-utm-params="true" data-skip-click="true" href="mailto:{{student.email}}">{{student.email}}</a></td>
+  </tr>
+  {% if student.country %}
+  <tr>
+    <td width="40%">Country</td>
+    <td class="text-right">{{student.country}}</td>
+  </tr>
+ {% endif %}
+ {% if student.src %}
+  <tr>
+    <td width="40%">Source</td>
+    <td class="text-right stripe">{{student.src}}</td>
+  </tr>
+  {% endif %}
+</table>
+
+<p class="text-center"><a data-skip-utm-params="true" href="{{student.admin_url}}" class="btn-primary">More details</a></p>

@@ -1,0 +1,14 @@
+<!--
+Email template: student/free_trial_ending_reminder
+Description: This email is sent to a student 7 days before a free trial will end
+ -->
+
+<!-- Email Title -->
+<p>Hi {{ sale.student_name }}, </p>
+<p>Your free trial for {{purchased_item_name}} is ending in <strong>7 days</strong>. You will be billed unless you cancel before <b>{{ next_billing_date }}</b>.</p>
+
+
+<!-- Content -->
+
+<!-- Auto-generated JSON-ld compliant JSON for showing action buttons in emails -->
+<script type="application/ld+json">{{ goto_action_json }}</script>

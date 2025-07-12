@@ -1,0 +1,46 @@
+<!--
+Email template: Voucher Notification
+Description: This email is sent to the recipient of a gift your customer has purchased
+ -->
+
+<!-- Content -->
+{% include "mailer_partials/email_header" %}
+<tr style="border-radius:0px">
+    <td class="header-title">
+      <h1>{{ purchaser_name }} sent you a gift from {{ school.name }}</h1>
+    </td>
+</tr>
+<tr>
+    <td class="content" style="padding-bottom:32px">
+        <p class="text-center"><img src={{ image_url }}></p>
+        <h2 class="text-center" style="margin-bottom:12px">{{ purchasable.name }}</h2>
+        {%  if purchasable.author != null %}
+        <p class="text-center" style="margin-bottom:12px">by {{ purchasable.author.name }}</p>
+        {% endif %}
+        <br>
+        {%  if note != null %}
+            <p class="text-center" style="font-size:14px">"{{ note }}"</p>
+        {% endif %}
+    </td>
+</tr>
+<tr>
+    <td class="content">
+        <p class="text-center" style="padding-top:0">
+            <a href="{{ enroll_user_url }}" class="btn-primary">
+                Redeem gift
+            </a>
+        </p>
+    </td>
+</tr>
+<tr>
+  <td class="text-left" style="font-size:12px">
+        <br>
+        Congratulations on your gift! When you tap ‘Redeem gift’,
+        you will be directed to {{ school.name }} to sign in or
+        create an account. Then, you can access your gift.
+        <br><br>Best wishes,
+        <br>{{ school.name }}
+    </td>
+</tr>
+<br>
+</table>

@@ -1,0 +1,20 @@
+<!--
+Email template: subscription_canceled_nonpayment
+Description: This email is sent to a student when their subscription ends due to nonpayment.
+ -->
+
+<!-- Content -->
+<p>Hi {{to.name}},</p>
+
+<p>We were unable to process your last payment for {{purchased_item.name}} at <a href="{{school.url}}">{{school.name}}</a>.</p>
+
+<p>After trying several times, we’re sorry to say we have to end your course access at this time. However, rest assured that you can re-purchase the course at any time and pick up right where you left off. If you were on a payment plan, you may want to contact the instructor to ask for a prorated price.</p>
+
+<p class="text-center"><a href='{{purchased_item.url}}' class="btn-primary">Sign up for the course again</a></b></p>
+
+<p>Feel free to get in touch with us if you have any questions!</p>
+
+<p>
+  {{text.email_receipts.sign_off }}<br>
+  {{ school.name }}
+</p>
