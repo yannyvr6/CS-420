@@ -1,0 +1,59 @@
+<!--
+Email template: new_lecture_comment
+Description: This email is sent to a user when a comment is posted to a discussion they are following.
+ -->
+
+<!-- Email Title -->
+<div class="header-title">
+  <h1 class="comment-title">New comment</h1>
+</div>
+
+<!-- Content -->
+<p class="comment-link">
+  <a href="{{comment.course_url}}?preview=logged_in">{{comment.course_name}}</a>
+  <span>></span>
+  <a href="{{comment.lecture_url}}?preview=logged_in">{{comment.lecture_name}}</a>
+</p>
+<p class="comment-author">
+  <span>{{comment.comment_author_name}}</span>
+  {% if comment.parent_author != "" %}
+    <span class="comment-author--re">Re: {{comment.parent_author}}</span>
+  {% endif %}
+</p>
+<p class="comment-date">{{comment.created_at}}</p>
+
+<hr class="separator">
+
+<blockquote class="comment-content">
+  <p class="comment-content--body">{{ comment.body}}</p>
+</blockquote>
+
+<p class="comment-action-container text-center">
+  <a href="{{comment.permalink_url}}?preview=logged_in" class="comment-action-container--button">Reply</a>
+</p>
+
+<hr class="separator">
+
+<!-- PROMOTIONAL PRODUCTS SECTION START -->
+<tr>
+  <td style="padding: 30px 20px; background-color: #f9f9f9; text-align: center; font-family: sans-serif;">
+    <h3 style="color: #333; margin-bottom: 20px; ">You might also like these courses:</h3>
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+      <tr>
+        <td align="center" style="padding: 0 10px;">
+          <a href="https://www.dojang.org/p/membership" style="text-decoration: none; color: #333;">
+            <img src="https://static-media.hotmart.com/cvbzJP2hCR-gTkindTb8W_5ppzE=/848x478/https://uploads.teachablecdn.com/membership/pop9o64TiKpv9jahcpvw_Untitled+design-8.png" alt="Digital Dojang Memberships" width="250" style="border-radius: 10px; display: block; margin: 0 auto;">
+            <p style="margin: 10px 0 0 0; font-size: 16px; text-align: center;">Digital Dojang Membership</p>
+          </a>
+        </td>
+        <td align="center" style="padding: 0 10px;">
+          <a href="https://dojang.org/p/kicking-fundamentals" style="text-decoration: none; color: #333;">
+            <img src="https://static-media.hotmart.com/ByJgdrTqZIjB9ciklvy-FDNRvjQ=/848x478/https://uploads.teachablecdn.com/attachments/PdvNVvJTFCig8GxI0JAp_kicking+fundamentals+branding.jpg" alt="Kicking Fundamentals Course" width="250" style="border-radius: 10px; display: block; margin: 0 auto;">
+            <p style="margin: 10px 0 0 0; font-size: 16px; text-align: center;">Kicking Fundamentals</p>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<!-- PROMOTIONAL PRODUCTS SECTION END -->

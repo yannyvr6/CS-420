@@ -1,0 +1,45 @@
+<!--
+    Email template: email_header
+    Description: The email header used across all templates
+    -->
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <title></title>
+        {% include "mailer_partials/email_styles" %}
+      </head>
+      <body>
+        <table style="background: #F5F6F7;" width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <!-- body -->
+              <table cellpadding="0" cellspacing="0" class="table-wrapper" style="box-shadow: 0 8px 20px #e3e7ea !important; -webkit-box-shadow: 0 8px 20px #e3e7ea !important; -moz-box-shadow: 0 8px 20px #e3e7ea !important;">
+                <tr>
+                  <!-- Brand Header -->
+                  <td class="container header" style="background-color: #92140C; padding: 20px 0;">
+                    <center>
+                      <table cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td>
+                            <img src="{{ email_settings.favicon_url }}" height="64" width="64" alt="Digital Dojang Logo" style="display: block; margin-right: 12px;">
+                          </td>
+                          <td>
+                            <span style="
+                              font-family: 'Segoe UI', Roboto, sans-serif;
+                              font-size: 20px;
+                              font-weight: 600;
+                              color: #f5f5f5;
+                              display: inline-block;
+                              vertical-align: middle;
+                              padding-left: 10px;">
+                              {{ school.name }}
+                            </span>
+                          </td>
+                        </tr>
+                      </table>
+                    </center>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="wrapper">
+                    <!-- Content will go here -->

@@ -1,0 +1,519 @@
+<style type="text/css">
+/* -------------------------------------
+  Email template: email_styles
+  Description: Adapted CSS for email templates to follow receipt layout styling, compatible with email_header, tailored for martial arts company.
+------------------------------------- */
+
+/* -------------------------------------
+  GLOBAL
+------------------------------------- */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4a5568;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 0;
+}
+
+.rounded-gravatar {
+  border-radius: 50%;
+  margin-top: -5px;
+}
+
+.clear-elements {
+  clear: both;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+/* -------------------------------------
+  WRAPPER
+------------------------------------- */
+.table-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 2px solid #b91c1c; /* Martial arts red border */
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.table-wrapper-branding {
+  width: 100%;
+  max-width: 600px;
+  margin: 15px auto;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  height: 42px;
+}
+
+.legal-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+/* -------------------------------------
+  RECEIPT STYLING
+------------------------------------- */
+.data-table {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 20px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.data-table td {
+  font-size: 14px;
+  color: #4a5568;
+  padding: 10px;
+  border-bottom: 1px dashed #4a5568;
+}
+
+.data-table .total td,
+.data-table .total td.text-right {
+  background: #f8fafc;
+  border: 0;
+  color: #1a202c;
+  font-weight: bold;
+}
+
+.data-table td.text-right {
+  text-align: right;
+}
+
+.data-table td a {
+  color: #b91c1c; /* Martial arts brand secondary color */
+  text-decoration: none;
+}
+
+h1.price-jumbo {
+  text-align: center;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 28px;
+  color: #b91c1c;
+  margin: 0 0 20px;
+}
+
+.quote {
+  font-style: italic;
+  text-align: center;
+  font-size: 13px;
+  margin: 10px 0;
+  color: #4a5568;
+}
+
+/* -------------------------------------
+  ELEMENTS
+------------------------------------- */
+p a,
+a {
+  color: #b91c1c; /* Martial arts brand secondary color */
+  text-decoration: none;
+}
+
+.btn-primary {
+  display: inline-block;
+  text-decoration: none;
+  color: #b91c1c;
+  background-color: #f5f6f7; /* Martial arts brand secondary color */
+  border: 2px solid #b91c1c;
+  font-size: 14px;
+  padding: 8px 30px;
+  margin: 20px auto;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+/* -------------------------------------
+  BODY
+------------------------------------- */
+table.body-wrap {
+  width: 100%;
+  padding: 20px;
+  background: #f4f4f4;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* -------------------------------------
+  HEADER
+------------------------------------- */
+.header {
+  background-color: #1a252f; /* Martial arts dark header */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.header img {
+  border-radius: 25%;
+  margin-right: 10px;
+  height: 64px;
+  width: 64px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+.header-title {
+  background: #1a252f; /* Martial arts dark header */
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-title h1,
+.header-title h1 a {
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.header-school-title {
+  font-weight: normal;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.header-title p,
+.header-title p a {
+  color: #ffffff;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+/* -------------------------------------
+  CONTENT
+------------------------------------- */
+.content {
+  margin: 0 auto;
+  max-width: 600px;
+  background: #ffffff;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 20px;
+}
+
+.content p,
+.content h1,
+.content h2,
+.content h3,
+.content table,
+.content hr {
+  padding: 0 20px;
+}
+
+.content p:first-child,
+.content h1 {
+  padding-top: 20px;
+}
+
+.content p:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.condensed-width {
+  max-width: 510px;
+  margin: 0 auto;
+}
+
+.table-container {
+  text-align: center;
+}
+
+.content-bordered {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+/* -------------------------------------
+  FOOTER
+------------------------------------- */
+.footer {
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  color: #6b7280;
+}
+
+.footer p {
+  font-size: 12px;
+  margin: 0;
+}
+
+.footer a {
+  color: #6b7280;
+  text-decoration: underline;
+}
+
+/* -------------------------------------
+  TYPOGRAPHY
+------------------------------------- */
+h1, h2, h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  color: #1a202c;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p, ul, ol {
+  font-weight: normal;
+  margin-bottom: 1em;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+hr {
+  border: none;
+  border-top: 1px dashed #4a5568;
+}
+
+/* Unsubscribe Link */
+a.unsubscribe-link {
+  font-size: 12px;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+  color: #6b7280;
+}
+
+/* Branding Link */
+a.branding-link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Branding Image */
+img.branding-image {
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+  margin: 10px auto;
+}
+
+/* Legal Text */
+p.legal-text {
+  font-size: 12px;
+  margin-top: 20px;
+  color: #6b7280;
+}
+
+/* -------------------------------------
+  TAX FORMS
+------------------------------------- */
+.tax-form-box {
+  border: 2px solid #6b7280;
+  border-radius: 8px;
+  margin: 0 20px;
+  padding: 15px;
+  text-align: center;
+  color: #1a202c;
+}
+
+/* -------------------------------------
+  FREE TRIAL ORDER SUMMARY
+------------------------------------- */
+.free-trial-summary p,
+.free-trial-summary .small-text {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+.free-trial-summary p a {
+  color: #b91c1c;
+  text-decoration: none;
+}
+
+.free-trial-summary table {
+  font-size: 14px;
+  line-height: 1.5;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.free-trial-summary table td {
+  padding: 5px 0;
+}
+
+.free-trial-summary .heading {
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+.free-trial-summary .gray {
+  color: #6b7280;
+}
+
+.free-trial-summary .border-row {
+  border-top: 1px solid #e2e8f0;
+}
+
+/* -------------------------------------
+  MODERATE/NEW COMMENT
+------------------------------------- */
+.header-title .comment-title {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.comment-link {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 15px 0;
+  color: #4a5568;
+}
+
+.comment-link a {
+  color: #b91c1c;
+  text-decoration: underline;
+}
+
+.comment-author {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 10px 0 0;
+  color: #4a5568;
+}
+
+.comment-date {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 15px;
+  color: #6b7280;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 20px 0;
+}
+
+.comment-content {
+  margin: 0;
+}
+
+.comment-content p.comment-content--body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5568;
+  padding: 0;
+}
+
+.comment-action-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.comment-action-container--button {
+  display: inline-block;
+  background-color: #b91c1c;
+  border: 1px solid #b91c1c;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.comment-author--re {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.content.new_lecture_comment,
+.content.moderate_lecture_comment {
+  background-color: #f8fafc;
+}
+
+/* -------------------------------------
+  RESPONSIVENESS
+------------------------------------- */
+@media only screen and (max-width: 600px) {
+  .table-wrapper,
+  .table-wrapper-branding,
+  .legal-wrapper,
+  .content {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .data-table {
+    max-width: 100%;
+  }
+
+  .data-table td {
+    display: block;
+    width: 100%;
+    text-align: left !important;
+    padding: 8px;
+  }
+
+  .data-table
+</style>

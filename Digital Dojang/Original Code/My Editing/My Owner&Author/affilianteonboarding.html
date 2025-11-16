@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .data-table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .data-table tr {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .data-table tr:last-child {
+            border-bottom: none;
+        }
+        .data-table td {
+            padding: 16px;
+            font-size: 14px;
+            color: #374151;
+        }
+        .data-table td:first-child {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        .data-table td.text-right {
+            text-align: right;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2563eb;
+            color: #ffffff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .email-link {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .email-link:hover {
+            text-decoration: underline;
+        }
+        .stripe {
+            color: #4b5563;
+        }
+        @media (max-width: 640px) {
+            .data-table td {
+                display: block;
+                width: 100%;
+                text-align: left !important;
+                padding: 12px;
+            }
+            .data-table td:first-child {
+                border-bottom: 1px solid #e5e7eb;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <p class="text-center text-lg font-semibold text-gray-800 mb-6">Here's some information about {{ student.name }}:</p>
+
+        <table class="data-table">
+            <tr>
+                <td width="40%">Full Name</td>
+                <td class="text-right">{{ student.name }}</td>
+            </tr>
+            <tr>
+                <td width="40%">Email Address</td>
+                <td class="text-right">
+                    <a class="email-link" data-skip-utm-params="true" data-skip-click="true" href="mailto:{{student.email}}">{{student.email}}</a>
+                </td>
+            </tr>
+            {% if student.country %}
+            <tr>
+                <td width="40%">Country</td>
+                <td class="text-right">{{student.country}}</td>
+            </tr>
+            {% endif %}
+            {% if student.src %}
+            <tr>
+                <td width="40%">Source</td>
+                <td class="text-right stripe">{{student.src}}</td>
+            </tr>
+            {% endif %}
+        </table>
+
+        <p class="text-center mt-6">
+            <a data-skip-utm-params="true" href="{{student.admin_url}}" class="btn-primary">More details</a>
+        </p>
+    </div>
+</body>
+</html>

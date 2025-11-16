@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Awaiting Moderation</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f4; padding: 20px;">
+        <tr>
+            <td align="center">
+                <table width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; overflow: hidden;" cellpadding="0" cellspacing="0">
+                    <!-- Email Title -->
+                    <tr>
+                        <td style="background-color: #1a252f; padding: 24px; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                            <h1 style="font-size: 24px; font-weight: bold; color: #ffffff; margin: 0;">Comment Awaiting Moderation</h1>
+                        </td>
+                    </tr>
+
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 24px;">
+                            <p style="font-size: 16px; line-height: 1.6; color: #4a5568; margin: 0 0 12px;">
+                                <a href="{{comment.course_url}}?preview=logged_in" style="color: #b91c1c; text-decoration: none; font-weight: normal;">{{comment.course_name}}</a>
+                                <span style="color: #6b7280;"> &gt; </span>
+                                <a href="{{comment.lecture_url}}?preview=logged_in" style="color: #b91c1c; text-decoration: none; font-weight: normal;">{{comment.lecture_name}}</a>
+                            </p>
+                            <p style="font-size: 16px; line-height: 1.6; color: #4a5568; margin: 0 0 12px;">
+                                <span style="font-weight: bold;">{{comment.comment_author_name}}</span>
+                                {% if comment.parent_author != "" %}
+                                    <span style="color: #6b7280;">Re: {{comment.parent_author}}</span>
+                                {% endif %}
+                            </p>
+                            <p style="font-size: 14px; line-height: 1.6; color: #6b7280; margin: 0 0 16px;">{{comment.created_at}}</p>
+
+                            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+
+                            <blockquote style="border-left: 4px solid #b91c1c; padding: 12px 16px; margin: 0 0 16px; background-color: #f8fafc;">
+                                <p style="font-size: 16px; line-height: 1.6; color: #4a5568; margin: 0;">{{ comment.body }}</p>
+                            </blockquote>
+
+                            <p style="text-align: center; margin: 24px 0;">
+                                {% if to.is_author %}
+                                    <a href="{{school.url}}/admin-app/courses/{{course_id}}/comments?tab=pending-approval&page=1&preview=logged_in" style="display: inline-block; padding: 12px 24px; background-color: #b91c1c; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: bold; border-radius: 4px;">Moderate Comment</a>
+                                {% else %}
+                                    <a href="{{school.url}}/admin-app/site/comments?tab=pending-approval&page=1&preview=logged_in" style="display: inline-block; padding: 12px 24px; background-color: #b91c1c; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: bold; border-radius: 4px;">Moderate Comment</a>
+                                {% endif %}
+                            </p>
+
+                            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f8fafc; padding: 16px; text-align: center; font-size: 12px; color: #6b7280;">
+                            <p style="margin: 0;">&copy; 2025 Your Dojang Name. All rights reserved.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

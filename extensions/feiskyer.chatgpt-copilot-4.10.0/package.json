@@ -1,0 +1,778 @@
+{
+	"name": "chatgpt-copilot",
+	"publisher": "feiskyer",
+	"displayName": "ChatGPT Copilot",
+	"icon": "images/ai-logo.png",
+	"description": "An VS Code ChatGPT Copilot Extension",
+	"version": "4.10.0",
+	"aiKey": "",
+	"repository": {
+		"url": "https://github.com/feiskyer/chatgpt-copilot"
+	},
+	"engines": {
+		"yarn": ">=1 <2",
+		"vscode": "^1.94.0"
+	},
+	"categories": [
+		"AI",
+		"Machine Learning",
+		"Testing",
+		"Data Science",
+		"Formatters",
+		"Programming Languages",
+		"Linters",
+		"Chat"
+	],
+	"keywords": [
+		"AI",
+		"chatgpt",
+		"copilot",
+		"agent",
+		"Claude",
+		"gpt",
+		"gpt4",
+		"llm",
+		"openai",
+		"Gemini",
+		"Llama",
+		"Ollama",
+		"testing",
+		"find bugs"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"menus": {
+			"editor/context": [
+				{
+					"command": "chatgpt-copilot.generateCode",
+					"group": "chatGpt@1",
+					"when": "editorHasSelection && generateCode-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.addTests",
+					"group": "chatGpt@2",
+					"when": "editorHasSelection && addTests-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.findProblems",
+					"group": "chatGpt@3",
+					"when": "editorHasSelection && findProblems-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.optimize",
+					"group": "chatGpt@4",
+					"when": "editorHasSelection && optimize-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.explain",
+					"group": "chatGpt@5",
+					"when": "editorHasSelection && explain-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.addComments",
+					"group": "chatGpt@6",
+					"when": "editorHasSelection && addComments-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.completeCode",
+					"group": "chatGpt@7",
+					"when": "editorHasSelection && completeCode-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.adhoc",
+					"group": "chatGpt@8",
+					"when": "editorHasSelection && adhoc-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.customPrompt1",
+					"group": "chatGpt@9",
+					"when": "editorHasSelection && customPrompt1-enabled"
+				},
+				{
+					"command": "chatgpt-copilot.customPrompt2",
+					"group": "chatGpt@10",
+					"when": "editorHasSelection && customPrompt2-enabled"
+				}
+			],
+			"view/title": [
+				{
+					"command": "chatgpt-copilot.openSettings",
+					"when": "view == chatgpt-copilot.view",
+					"group": "navigation@3"
+				},
+				{
+					"command": "chatgpt-copilot.openPromptManager",
+					"when": "view == promptManager",
+					"group": "navigation"
+				},
+				{
+					"command": "chatgpt-copilot.openMCPServers",
+					"when": "view == mcpServersView",
+					"group": "navigation"
+				},
+				{
+					"command": "chatgpt-copilot.togglePromptManager",
+					"when": "view == chatgpt-copilot.view",
+					"group": "navigation@1"
+				},
+				{
+					"command": "chatgpt-copilot.openMCPServers",
+					"when": "view == chatgpt-copilot.view",
+					"group": "navigation@2"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "chatgpt-copilot.generateCode",
+				"key": "ctrl+shift+a",
+				"mac": "cmd+shift+a",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.addTests",
+				"key": "ctrl+k ctrl+shift+1",
+				"mac": "cmd+k cmd+shift+1",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.findProblems",
+				"key": "ctrl+k ctrl+shift+2",
+				"mac": "cmd+k cmd+shift+2",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.optimize",
+				"key": "ctrl+k ctrl+shift+3",
+				"mac": "cmd+k cmd+shift+3",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.explain",
+				"key": "ctrl+k ctrl+shift+4",
+				"mac": "cmd+k cmd+shift+4",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.addComments",
+				"key": "ctrl+k ctrl+shift+5",
+				"mac": "cmd+k cmd+shift+5",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.completeCode",
+				"key": "ctrl+k ctrl+shift+6",
+				"mac": "cmd+k cmd+shift+6",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.adhoc",
+				"key": "ctrl+k ctrl+shift+7",
+				"mac": "cmd+k cmd+shift+7",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.customPrompt1",
+				"key": "ctrl+k ctrl+shift+8",
+				"mac": "cmd+k cmd+shift+8",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.customPrompt2",
+				"key": "ctrl+k ctrl+shift+9",
+				"mac": "cmd+k cmd+shift+9",
+				"when": "editorHasSelection"
+			}
+		],
+		"commands": [
+			{
+				"command": "chatgpt-copilot.freeText",
+				"title": "ChatGPT: Ask anything"
+			},
+			{
+				"command": "chatgpt-copilot.clearSession",
+				"title": "ChatGPT: Reset session"
+			},
+			{
+				"command": "chatgpt-copilot.generateCode",
+				"title": "ChatGPT-Codex: Generate code",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.addTests",
+				"title": "ChatGPT: Add tests",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.findProblems",
+				"title": "ChatGPT: Find bugs",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.optimize",
+				"title": "ChatGPT: Optimize",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.explain",
+				"title": "ChatGPT: Explain",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.addComments",
+				"title": "ChatGPT: Add comments",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.completeCode",
+				"title": "ChatGPT: Complete code",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.adhoc",
+				"title": "ChatGPT: Ad-hoc prompt",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.customPrompt1",
+				"title": "ChatGPT: Custom prompt 1",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.customPrompt2",
+				"title": "ChatGPT: Custom prompt 2",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "chatgpt-copilot.clearConversation",
+				"title": "ChatGPT: Clear conversation"
+			},
+			{
+				"command": "chatgpt-copilot.exportConversation",
+				"title": "ChatGPT: Export conversation"
+			},
+			{
+				"command": "chatgpt-copilot.managePrompts",
+				"title": "ChatGPT: Manage Prompts"
+			},
+			{
+				"command": "chatgpt-copilot.debugPrompts",
+				"title": "ChatGPT: Debug Stored Prompts"
+			},
+			{
+				"command": "chatgpt-copilot.togglePromptManager",
+				"title": "ChatGPT: Toggle Prompt Manager",
+				"icon": "$(list-unordered)"
+			},
+			{
+				"command": "chatgpt-copilot.addCurrentFile",
+				"title": "Add Current File to Chat Context",
+				"category": "ChatGPT"
+			},
+			{
+				"command": "chatgpt-copilot.openPromptManager",
+				"title": "ChatGPT: Open Prompt Manager"
+			},
+			{
+				"command": "chatgpt-copilot.openMCPServers",
+				"title": "ChatGPT: Open MCP Servers",
+				"icon": "media/mcp.svg"
+			},
+			{
+				"command": "chatgpt-copilot.openSettings",
+				"title": "ChatGPT: Open Settings",
+				"icon": "$(gear)"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "chatgpt-copilot-view-container",
+					"title": "ChatGPT",
+					"icon": "images/ai-logo-small.png"
+				}
+			]
+		},
+		"views": {
+			"chatgpt-copilot-view-container": [
+				{
+					"type": "webview",
+					"id": "chatgpt-copilot.view",
+					"name": "ChatGPT"
+				}
+			]
+		},
+		"configuration": {
+			"title": "ChatGPT",
+			"properties": {
+				"chatgpt.gpt3.provider": {
+					"type": "string",
+					"markdownDescription": "Provider of LLM.",
+					"enum": [
+						"Auto",
+						"OpenAI",
+						"Ollama",
+						"Azure",
+						"AzureAI",
+						"Anthropic",
+						"GitHubCopilot",
+						"Google",
+						"Mistral",
+						"xAI",
+						"Together",
+						"DeepSeek",
+						"Groq",
+						"Perplexity",
+						"OpenRouter",
+						"ClaudeCode"
+					],
+					"markdownEnumDescriptions": [
+						"Auto - Infer provider from model",
+						"OpenAI - OpenAI and OpenAI-compatible providers",
+						"Ollama - Ollama local provider",
+						"Azure - Azure OpenAI AI",
+						"AzureAI - Azure AI (non-OpenAI models)",
+						"Anthropic - Anthropic claude provider",
+						"GitHubCopilot - Github Copilot provider",
+						"Google - Google Generative AI",
+						"Mistral",
+						"xAI",
+						"Together",
+						"DeepSeek",
+						"Groq",
+						"Perplexity",
+						"OpenRouter",
+						"ClaudeCode"
+					],
+					"default": "Auto",
+					"order": 0
+				},
+				"chatgpt.gpt3.apiKey": {
+					"type": "string",
+					"markdownDescription": "API key of your LLM provider",
+					"order": 1
+				},
+				"chatgpt.gpt3.apiBaseUrl": {
+					"type": "string",
+					"default": "https://api.openai.com/v1",
+					"markdownDescription": "Optional override for the API base URL. Please start with `https://` without a trailing slash. The completions endpoint suffix is added internally, e.g. for reference: `${apiBaseUrl}/v1/completions`",
+					"order": 2
+				},
+				"chatgpt.gpt3.organization": {
+					"type": "string",
+					"markdownDescription": "OpenAI Organization ID. [Documentation](https://beta.openai.com/docs/api-reference/requesting-organization).",
+					"order": 8
+				},
+				"chatgpt.gpt3.model": {
+					"type": "string",
+					"enum": [
+						"chatgpt-4o-latest",
+						"gpt-3.5-turbo",
+						"gpt-4",
+						"gpt-4o",
+						"gpt-4.1",
+						"gpt-4o-mini",
+						"gpt-4-vision-preview",
+						"gpt-4-turbo",
+						"gpt-4-turbo-preview",
+						"gpt-4.5-preview",
+						"gpt-5",
+						"gpt-5-mini",
+						"gpt-5-nano",
+						"gpt-5-chat-latest",
+						"o1",
+						"o1-mini",
+						"o1-pro",
+						"o1-preview",
+						"o3",
+						"o3-mini",
+						"o3-pro",
+						"o4",
+						"o4-mini",
+						"claude-3-5-sonnet-latest",
+						"claude-3-5-sonnet-20241022",
+						"claude-3-5-haiku-latest",
+						"claude-3-5-haiku-20241022",
+						"claude-3-7-sonnet-latest",
+						"claude-3-7-sonnet-20250219",
+						"claude-opus-4-20250514",
+						"claude-sonnet-4-20250514",
+						"claude-opus-4-1-20250805",
+						"gemini-2.0-flash",
+						"gemini-2.0-flash-lite",
+						"gemini-2.0-flash-preview-image-generation",
+						"gemini-2.5-flash",
+						"gemini-2.5-flash-lite-preview-06-17",
+						"gemini-2.5-pro",
+						"gemini-2.5-pro-preview-05-06",
+						"grok-2-1212",
+						"grok-2-vision-1212",
+						"grok-vision-beta",
+						"grok-beta",
+						"grok-3-beta",
+						"grok-3-mini-beta",
+						"grok-3-fast-beta",
+						"grok-3-mini-fast-beta",
+						"deepseek-chat",
+						"DeepSeek-V3",
+						"deepseek-reasoner",
+						"DeepSeek-R1",
+						"custom"
+					],
+					"default": "gpt-4o",
+					"markdownDescription": "OpenAI models to use for your prompts. [Documentation](https://beta.openai.com/docs/models/models). \n\n**If you face 400 Bad Request please make sure you are using the right model for your integration method.** \n\nFor local or self-hosted LLMs compatible with OpenAI, you can select `custom` and specify your custom model name in `#chatgpt.gpt3.customModel#`.",
+					"order": 4
+				},
+				"chatgpt.gpt3.customModel": {
+					"type": "string",
+					"default": "",
+					"markdownDescription": "Specify your custom model name here if you selected `custom` in `#chatgpt.gpt3.model#`. This allows you to use a custom model name for local or self-hosted LLMs compatible with OpenAI.",
+					"order": 5
+				},
+				"chatgpt.gpt3.maxTokens": {
+					"type": "number",
+					"default": 0,
+					"markdownDescription": "The maximum number of tokens to generate in the completion. \n\nThe token count of your prompt plus max_tokens cannot exceed the model's context length. Most models have a context length of 2048 tokens (except for the newest models, which support 4096). [Documentation](https://beta.openai.com/docs/api-reference/completions/create#completions/create-max_tokens)**",
+					"order": 6
+				},
+				"chatgpt.gpt3.temperature": {
+					"type": "number",
+					"default": 1,
+					"markdownDescription": "What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer.\n\nIt is recommended altering this or top_p but not both. [Documentation](https://beta.openai.com/docs/api-reference/completions/create#completions/create-temperature)**",
+					"order": 7
+				},
+				"chatgpt.gpt3.top_p": {
+					"type": "number",
+					"default": 1,
+					"markdownDescription": "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. \n\nIt is recommended altering this or temperature but not both. [Documentation](https://beta.openai.com/docs/api-reference/completions/create#completions/create-top_p)**",
+					"order": 8
+				},
+				"chatgpt.systemPrompt": {
+					"type": "string",
+					"default": "",
+					"description": "System prompts for the copilot.",
+					"order": 9
+				},
+				"chatgpt.reasoningEffort": {
+					"type": "string",
+					"default": "high",
+					"enum": [
+						"low",
+						"medium",
+						"high"
+					],
+					"description": "Reasoning effort for reasoning models.",
+					"order": 10
+				},
+				"chatgpt.gpt3.generateCode-enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the code generation context menu item for the selected comment/code for Codex. Only available with code-* models.",
+					"order": 10
+				},
+				"chatgpt.gpt3.searchGrounding.enabled": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable search grounding for Gemini model. Only available for Google Gemini models.",
+					"order": 11
+				},
+				"chatgpt.gpt3.responsesAPI.enabled": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable OpenAI Responses API. Only available for OpenAI/AzureOpenAI models.",
+					"order": 12
+				},
+				"chatgpt.promptPrefix.addTests": {
+					"type": "string",
+					"default": "Implement tests for the following code",
+					"description": "The prompt prefix used for adding tests for the selected code",
+					"order": 31
+				},
+				"chatgpt.promptPrefix.addTests-enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the prompt prefix used for adding tests for the selected code in the context menu",
+					"order": 32
+				},
+				"chatgpt.promptPrefix.findProblems": {
+					"type": "string",
+					"default": "Find problems with the following code",
+					"description": "The prompt prefix used for finding problems for the selected code",
+					"order": 33
+				},
+				"chatgpt.promptPrefix.findProblems-enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the prompt prefix used for finding problems for the selected code in the context menu",
+					"order": 34
+				},
+				"chatgpt.promptPrefix.optimize": {
+					"type": "string",
+					"default": "Optimize the following code",
+					"description": "The prompt prefix used for optimizing the selected code",
+					"order": 35
+				},
+				"chatgpt.promptPrefix.optimize-enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the prompt prefix used for optimizing the selected code in the context menu",
+					"order": 36
+				},
+				"chatgpt.promptPrefix.explain": {
+					"type": "string",
+					"default": "Explain the following code",
+					"description": "The prompt prefix used for explaining the selected code",
+					"order": 37
+				},
+				"chatgpt.promptPrefix.explain-enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the prompt prefix used for explaining the selected code in the context menu",
+					"order": 38
+				},
+				"chatgpt.promptPrefix.addComments": {
+					"type": "string",
+					"default": "Add comments for the following code",
+					"description": "The prompt prefix used for adding comments for the selected code",
+					"order": 39
+				},
+				"chatgpt.promptPrefix.addComments-enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the prompt prefix used for adding comments for the selected code in the context menu",
+					"order": 40
+				},
+				"chatgpt.promptPrefix.completeCode": {
+					"type": "string",
+					"default": "Complete the following code",
+					"description": "The prompt prefix used for completing the selected code",
+					"order": 41
+				},
+				"chatgpt.promptPrefix.completeCode-enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the prompt prefix used for completing the selected code in the context menu",
+					"order": 42
+				},
+				"chatgpt.promptPrefix.adhoc-enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable the prompt prefix used for adhoc command for the selected code in the context menu",
+					"order": 43
+				},
+				"chatgpt.promptPrefix.customPrompt1": {
+					"type": "string",
+					"default": "",
+					"description": "Your custom prompt 1. It's disabled by default, please set to a custom prompt and enable it if you prefer using customized prompt",
+					"order": 71
+				},
+				"chatgpt.promptPrefix.customPrompt1-enabled": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enable custom prompt 1. If you enable this item make sure to set this `#chatgpt.promptPrefix.customPrompt1#`",
+					"order": 72
+				},
+				"chatgpt.promptPrefix.customPrompt2": {
+					"type": "string",
+					"default": "",
+					"description": "Your custom prompt 2. It's disabled by default, please set to a custom prompt and enable it if you prefer using customized prompt",
+					"order": 73
+				},
+				"chatgpt.promptPrefix.customPrompt2-enabled": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enable custom prompt 2. If you enable this item make sure to set this `#chatgpt.promptPrefix.customPrompt2#`",
+					"order": 74
+				},
+				"chatgpt.response.showNotification": {
+					"type": "boolean",
+					"default": false,
+					"description": "Choose whether you'd like to receive a notification when ChatGPT bot responds to your query.",
+					"order": 91
+				},
+				"chatgpt.response.autoScroll": {
+					"type": "boolean",
+					"default": true,
+					"description": "Whenever there is a new question or response added to the conversation window, extension will automatically scroll to the bottom. You can change that behaviour by disabling this setting.",
+					"order": 92
+				},
+				"chatgpt.autoAddCurrentFile": {
+					"type": "boolean",
+					"default": false,
+					"description": "Automatically add current file to chat context when switching files",
+					"order": 122
+				},
+				"chatgpt.gpt3.reasoning.provider": {
+					"type": "string",
+					"markdownDescription": "[Reasoning Model] AI Provider.",
+					"enum": [
+						"Auto",
+						"OpenAI",
+						"Ollama",
+						"Azure",
+						"AzureAI",
+						"Google",
+						"DeepSeek",
+						"Groq",
+						"OpenRouter"
+					],
+					"markdownEnumDescriptions": [
+						"Auto - Infer provider from model",
+						"OpenAI - OpenAI and OpenAI-compatible providers",
+						"Ollama - Ollama local provider",
+						"Azure - Azure OpenAI AI",
+						"AzureAI - Azure AI (non-OpenAI models)",
+						"Google - Google Generative AI",
+						"DeepSeek",
+						"Groq",
+						"OpenRouter"
+					],
+					"default": "Auto",
+					"order": 150
+				},
+				"chatgpt.gpt3.reasoning.apiKey": {
+					"type": "string",
+					"markdownDescription": "[Reasoning Model] API Key.",
+					"order": 151
+				},
+				"chatgpt.gpt3.reasoning.apiBaseUrl": {
+					"type": "string",
+					"default": "https://api.openai.com/v1",
+					"markdownDescription": "[Reasoning Model] API Base URL.",
+					"order": 152
+				},
+				"chatgpt.gpt3.reasoning.organization": {
+					"type": "string",
+					"markdownDescription": "[Reasoning Model] Organization (OpenAI only).",
+					"order": 153
+				},
+				"chatgpt.gpt3.reasoning.model": {
+					"type": "string",
+					"default": "",
+					"markdownDescription": "[Reasoning Model] Model to use for reasoning.",
+					"order": 154
+				},
+				"chatgpt.gpt3.maxSteps": {
+					"type": "number",
+					"default": 15,
+					"markdownDescription": "Max steps for agent mode (useful when using MCP servers).",
+					"order": 155
+				},
+				"chatgpt.promptBasedTools.enabled": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enable prompt-based tool calls for models that don't support native tool calling. This allows tool usage through text parsing instead of native API support.",
+					"order": 156
+				},
+				"chatgpt.gpt3.claudeCodePath": {
+					"type": "string",
+					"default": "",
+					"markdownDescription": "Absolute path for claude code CLI.",
+					"order": 157
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "rimraf out && yarn esbuild-base --minify",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"build": "yarn esbuild-base --sourcemap",
+		"watch": "yarn esbuild-base --sourcemap --watch",
+		"fmt": "yarn prettier && yarn lint:fix && yarn typecheck",
+		"fmt:check": "yarn prettier:check && yarn lint && yarn typecheck",
+		"prettier": "prettier --write \"src/**/*.ts\"",
+		"prettier:check": "prettier --check \"src/**/*.ts\"",
+		"lint": "eslint src --ext ts",
+		"lint:fix": "eslint src --ext ts --fix",
+		"typecheck": "tsc --noEmit",
+		"update": "yarn add -D npm-check-updates && ncu -u -t latest && yarn install",
+		"test": "yarn lint && yarn typecheck",
+		"package": "yarn vsce package",
+		"publish": "yarn vsce publish"
+	},
+	"devDependencies": {
+		"@types/glob": "^9.0.0",
+		"@types/isomorphic-fetch": "^0.0.39",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^24.2.0",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"@types/uuid": "^10.0.0",
+		"@types/vscode": "1.94.0",
+		"@types/vscode-webview": "^1.57.5",
+		"@typescript-eslint/eslint-plugin": "^8.39.0",
+		"@typescript-eslint/parser": "^8.39.0",
+		"@vscode/test-electron": "^2.5.2",
+		"@vscode/vsce": "^3.6.0",
+		"esbuild": "^0.25.8",
+		"eslint": "^9.32.0",
+		"glob": "^11.0.3",
+		"mocha": "^11.7.1",
+		"npm-check-updates": "^18.0.2",
+		"prettier": "^3.6.2",
+		"rimraf": "^6.0.1",
+		"ts-loader": "^9.5.2",
+		"typescript": "^5.9.2",
+		"vitest": "^3.2.4",
+		"webpack": "^5.101.0"
+	},
+	"dependencies": {
+		"@ai-sdk/anthropic": "^2.0.1",
+		"@ai-sdk/azure": "^2.0.7",
+		"@ai-sdk/deepseek": "^1.0.2",
+		"@ai-sdk/google": "^2.0.2",
+		"@ai-sdk/groq": "^2.0.2",
+		"@ai-sdk/mistral": "^2.0.1",
+		"@ai-sdk/openai": "^2.0.4",
+		"@ai-sdk/perplexity": "^2.0.1",
+		"@ai-sdk/provider": "^2.0.0",
+		"@ai-sdk/replicate": "^1.0.1",
+		"@ai-sdk/togetherai": "^1.0.2",
+		"@ai-sdk/xai": "^2.0.2",
+		"@anthropic-ai/claude-code": "^1.0.73",
+		"@modelcontextprotocol/sdk": "^1.17.1",
+		"@openrouter/ai-sdk-provider": "^1.1.0",
+		"@quail-ai/azure-ai-provider": "^1.2.0",
+		"ai": "^5.0.10",
+		"ai-sdk-provider-gemini-cli": "^0.1.1",
+		"ajv": "^8.17.1",
+		"axios": "^1.11.0",
+		"cheerio": "^1.1.2",
+		"delay": "^6.0.0",
+		"eventsource-parser": "^3.0.3",
+		"gpt3-tokenizer": "^1.1.5",
+		"isomorphic-fetch": "^3.0.0",
+		"keyv": "^5.5.0",
+		"minimatch": "^10.0.3",
+		"ollama-ai-provider": "^1.2.0",
+		"openai": "^5.12.0",
+		"p-timeout": "^6.1.4",
+		"punycode": "^2.3.1",
+		"puppeteer": "^24.16.0",
+		"puppeteer-extra": "^3.3.6",
+		"puppeteer-extra-plugin-stealth": "^2.11.2",
+		"puppeteer-extra-plugin-user-data-dir": "^2.4.1",
+		"puppeteer-extra-plugin-user-preferences": "^2.4.1",
+		"quick-lru": "^7.0.1",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
+		"remark": "^15.0.1",
+		"strip-markdown": "^6.0.0",
+		"uri-js": "^4.4.1",
+		"uuid": "^11.1.0",
+		"zod": "^4.0.15"
+	},
+	"resolutions": {
+		"punycode": "2.3.1",
+		"clone-deep": "^4.0.1"
+	},
+	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+	"__metadata": {
+		"installedTimestamp": 1757687485077,
+		"targetPlatform": "undefined",
+		"size": 2371998
+	}
+}

@@ -1,0 +1,53 @@
+<!--
+Email template: limited_time_unenrollment
+Description: This email is sent to a student when their access has expired to a product with product access duration set up.
+ -->
+
+<!-- Content -->
+<p>Hi {{to.name}},</p>
+
+<p>Your access to {{purchased_item.name}} at <a href="{{school.url}}">{{school.name}}</a> has expired.</p>
+
+<p>Regain access to this or other products here:</p>
+
+<p class='text-center'><a href='{{school.full_url}}' class='btn-primary'>Browse Products</a></p>
+{% if bundled_products != null %}
+    <p>Your expired bundle includes:</p>
+
+    <ul>
+        {% for p in bundled_products -%}
+            <li>{{ p.name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Feel free to get in touch with us with any questions or concerns.</p>
+{% endif %}
+
+<p>
+  {{text.email_receipts.sign_off }}<br>
+  {{ school.name }}
+</p>
+
+<!-- PROMOTIONAL PRODUCTS SECTION START -->
+<tr>
+  <td style="padding: 30px 20px; background-color: #f9f9f9; text-align: center; font-family: sans-serif;">
+    <h3 style="color: #333; margin-bottom: 20px; ">You might also like these courses:</h3>
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+      <tr>
+        <td align="center" style="padding: 0 10px;">
+          <a href="https://www.dojang.org/p/membership" style="text-decoration: none; color: #333;">
+            <img src="https://static-media.hotmart.com/cvbzJP2hCR-gTkindTb8W_5ppzE=/848x478/https://uploads.teachablecdn.com/membership/pop9o64TiKpv9jahcpvw_Untitled+design-8.png" alt="Digital Dojang Memberships" width="250" style="border-radius: 10px; display: block; margin: 0 auto;">
+            <p style="margin: 10px 0 0 0; font-size: 16px; text-align: center;">Digital Dojang Membership</p>
+          </a>
+        </td>
+        <td align="center" style="padding: 0 10px;">
+          <a href="https://dojang.org/p/kicking-fundamentals" style="text-decoration: none; color: #333;">
+            <img src="https://static-media.hotmart.com/ByJgdrTqZIjB9ciklvy-FDNRvjQ=/848x478/https://uploads.teachablecdn.com/attachments/PdvNVvJTFCig8GxI0JAp_kicking+fundamentals+branding.jpg" alt="Kicking Fundamentals Course" width="250" style="border-radius: 10px; display: block; margin: 0 auto;">
+            <p style="margin: 10px 0 0 0; font-size: 16px; text-align: center;">Kicking Fundamentals</p>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<!-- PROMOTIONAL PRODUCTS SECTION END -->
