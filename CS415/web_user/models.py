@@ -3,6 +3,8 @@ from django.db import models
 # Create your models here.
 from django.db import models
 
+
+
 class WebUser(models.Model):
     web_user_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255)
